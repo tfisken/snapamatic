@@ -20,9 +20,15 @@ platforms:
 suites:
   - name: default
     run_list:
-#      - recipe[gd-test-helper]
+      - recipe[gd-test-helper]
       - recipe[snap-a-matic-15000]
     attributes:
+          fake_databags:
+        - data_bag: 'ux-settings'
+          content:
+            id: 'secrets'
+            secrets:
+              FIREFLY_CYPHER_KEY: <%= ENV['FIREFLY_CYPHER_KEY'] %>
       appdynamics:
         tier: 'snap-a-matic-15000'
       authorization:
