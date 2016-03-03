@@ -1,0 +1,37 @@
+---
+driver:
+  name: vagrant
+  customize:
+    memory: 2048
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.7
+    driver:
+      box: centos-67
+      box_url: https://deploy.gmti.gbahn.net/Images/CentOS6/vagrant/centos67-cloud-1.0.0.box
+  - name: centos-7.1
+    driver:
+      box: centos-71
+      box_url: https://deploy.gmti.gbahn.net/Images/centos7/vagrant/centos71-cloud-1.0.0.box
+
+suites:
+  - name: default
+    run_list:
+#      - recipe[gd-test-helper]
+      - recipe[snap-a-matic-15000]
+    attributes:
+      appdynamics:
+        tier: 'snap-a-matic-15000'
+      authorization:
+        sudo:
+          users: ['vagrant']
+          passwordless: true
+    chef_client:
+      config:
+        log_level: ":debug"
+    excludes:
+        - centos-7.1
+
