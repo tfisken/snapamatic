@@ -9,10 +9,10 @@ override['runit']['use_package_from_yum'] = true
 override['nginx']['default_site_enabled'] = false
 override['nginx']['version'] = (node['platform_family'] == 'rhel' && node['platform_version'].to_f >= 7 ? '1.8.0-1' : '1.6.2')
 
-override['nginx']['version_page'] = true
+override['nginx']['version_page'] = false
 
-override['python-deployment']['application']['name'] = 'uscp-web'
-override['python-deployment']['application']['settings'] = 'settings_uscp-web'
+override['python-deployment']['application']['name'] = 'snap-a-matic-15000'
+override['python-deployment']['application']['settings'] = 'settings_snap-a-matic-15000'
 override['python-deployment']['application']['additional_settings'] = true
 override['python-deployment']['application']['config_location'] = 'remote'
 override['python-deployment']['application']['framework'] = 'django'
